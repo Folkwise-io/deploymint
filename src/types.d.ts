@@ -7,9 +7,13 @@ interface ExecutionResult {
     originalError?: Error;
 }
 
-interface Strategy<O> {
-    execute(): Promise<ExecutionResult>;
-    getLabel(): string;
-    setOptions(options: O): void;
-    validateOptions(options: O): void;
+interface Options {
+    platform:string
+}
+
+interface Strategy<Options> {
+  execute(): Promise<ExecutionResult>;
+  getLabel(): string;
+  setOptions(options: Options): void;
+  validateOptions(options: Options): void;
 }
