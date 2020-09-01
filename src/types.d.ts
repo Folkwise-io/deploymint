@@ -1,17 +1,18 @@
-type ExecutionStatus = "DEPLOYED" | "FAILED" | "MANUAL_ACTION_NEEDED";
+type ExecutionStatus = 'DEPLOYED' | 'FAILED' | 'MANUAL_ACTION_NEEDED';
 
 interface ExecutionResult {
-    status: ExecutionStatus;
-    message: string;
-    deploymentUrl?: string;
-    originalError?: Error;
+  status: ExecutionStatus;
+  message: string;
+  deploymentUrl?: string;
+  originalError?: Error;
 }
 
 interface Options {
-    platform:string
+  platform: string;
 }
 
 interface Strategy<Options> {
+  options: object;
   execute(): Promise<ExecutionResult>;
   getLabel(): string;
   setOptions(options: Options): void;

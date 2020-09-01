@@ -1,12 +1,25 @@
+const main = require('../../node_modules/gh-pages/bin/gh-pages.js');
+import execa from "execa"
+
+interface GithubOptions {
+    source:string,
+    args: string[]
+}
+
 export class GithubPagesStrategy implements Strategy<object> {
-  setOptions(options: object): void {
+  options: GithubOptions;
+  constructor() {
+    this.options = { source: '', args: [] };
+  }
+  setOptions(options: GithubOptions): void {
+    this.options = options;
+  }
+  validateOptions(options: GithubOptions): void {
     console.log(options);
   }
-  validateOptions(options: object): void {
-    console.log(options);
-  }
-  execute(): Promise<ExecutionResult> {
-    throw new Error('Method not implemented.');
+  async execute(): Promise<ExecutionResult> {
+    await execa('npm', ['run build']);
+    return await main([...this.options.args, "-d", this.options.source])
   }
   getLabel() {
     return 'gh-pages';

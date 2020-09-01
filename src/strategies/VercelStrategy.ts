@@ -1,4 +1,8 @@
 export class VercelStrategy implements Strategy<object> {
+  options: object;
+  constructor() {
+      this.options = {}
+  }
   setOptions(options: object): void {
     console.log(options);
   }

@@ -34,11 +34,17 @@
   "author": "Monarch Wadia",
   "module": "dist/deploymint.esm.js",
   "devDependencies": {
+    "@types/gh-pages": "^3.0.0",
+    "@types/node": "^14.6.2",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
     "tsdx": "^0.13.3",
     "tslib": "^2.0.1",
     "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "execa": "^4.0.3",
+    "gh-pages": "^3.1.0"
   }
 }
